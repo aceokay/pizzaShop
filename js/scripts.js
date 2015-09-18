@@ -31,3 +31,7 @@ Pizza.prototype.costs = function() {
 
   this.price = price;
 }
+
+// $(document).ready(function() {
+//   $("#add-pizza").click()
+// });

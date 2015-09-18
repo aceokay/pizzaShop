@@ -4,9 +4,37 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">  <link href="css/styles.css" rel="stylesheet" type="text/css">
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="js/scripts.js"></script>
-  <title>Showtime</title>
+  <title>Pizza Shop</title>
 </head>
 <body>
+  <div class="container">
+    <h2>Pizza Order Form</h2>
+    <form id="new-pizza-form">
+      <div class="form-group">
+         <select id="pizza-size" class="form-control" required="true">
+           <option selected disabled>Select Size</option>
+           <option value="small">small</option>
+           <option value="medium">medium</option>
+           <option value="large">large</option>
+         </select>
+       </div>
 
+      <div id="new-toppings">
+        <div class="new-topping">
+          <div class="form-group">
+             <select id="pizza-topping" class="form-control" required="true">
+               <option selected disabled>Select topping</option>
+               <option value="Love">Love</option>
+               <option value="Olive">Olives</option>
+               <option value="Mayo">Mayo</option>
+             </select>
+           </div>
+        </div>
+      </div>
+
+      <span class="btn btn-primary" id="add-topping">Additional Topping</span>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
 </body>
 </html>
