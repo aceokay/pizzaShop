@@ -34,7 +34,7 @@ Pizza.prototype.costs = function() {
 
 $(document).ready(function() {
   $("#add-topping").click(function() {
-    var newTopping = ( "<div class='form-group'>" +
+    var newTopping = ( "<div class='form-group new-topping'>" +
                          "<select id='pizza-topping' class='form-control' required='true'>" +
                            "<option selected disabled>Select topping</option>" +
                            "<option value='Love'>Love</option>" +
@@ -46,6 +46,20 @@ $(document).ready(function() {
   });
 
   $('form#new-pizza-form').submit(function() {
-    
+    event.preventDefault();
+
+    var newPizza = new Pizza();
+
+    var inputtedPizzaSize = $(this).find('#pizza-size option:selected').val();
+
+    // if (inputtedPizzaSize === "small")
+    eval("newPizza.size." + inputtedPizzaSize + " = true");
+debugger;
+    $('.new-topping').each(function() {
+      var inputtedPizzaTopping = $(this).find('#pizza-topping option:selected').val();
+      var newTopping = new Topping(inputtedPizzaTopping);
+      newPizza.toppings.push(newTopping);
+    });
+    debugger;
   });
 });
