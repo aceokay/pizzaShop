@@ -52,14 +52,18 @@ $(document).ready(function() {
 
     var inputtedPizzaSize = $(this).find('#pizza-size option:selected').val();
 
-    // if (inputtedPizzaSize === "small")
     eval("newPizza.size." + inputtedPizzaSize + " = true");
-debugger;
+
     $('.new-topping').each(function() {
       var inputtedPizzaTopping = $(this).find('#pizza-topping option:selected').val();
       var newTopping = new Topping(inputtedPizzaTopping);
       newPizza.toppings.push(newTopping);
     });
-    debugger;
+
+    newPizza.costs();
+    $("#result-cost").text(newPizza.price);
+
+    $("#pizza-order").hide();
+    $("#order-result").show();
   });
 });

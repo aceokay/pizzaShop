@@ -8,29 +8,34 @@
 </head>
 <body>
   <div class="container">
-    <h2>Pizza Order Form</h2>
-    <form id="new-pizza-form">
-      <div class="form-group">
-        <select id="pizza-size" class="form-control" required="true">
-          <option selected disabled>Select Size</option>
-          <option value="small">small</option>
-          <option value="medium">medium</option>
-          <option value="large">large</option>
-        </select>
-      </div>
-      <div id="new-toppings">
-        <div class="form-group new-topping">
-          <select id="pizza-topping" class="form-control" required="true">
-            <option selected disabled>Select topping</option>
-            <option value="Love">Love</option>
-            <option value="Olive">Olives</option>
-            <option value="Mayo">Mayo</option>
+    <div id="pizza-order">
+      <h2>Pizza Order Form</h2>
+      <form id="new-pizza-form">
+        <div class="form-group">
+          <select id="pizza-size" class="form-control" required="true">
+            <option selected disabled>Select Size</option>
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
           </select>
         </div>
-      </div>
-      <span class="btn btn-primary" id="add-topping">Additional Topping</span>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+        <div id="new-toppings">
+          <div class="form-group new-topping">
+            <select id="pizza-topping" class="form-control" required="true">
+              <option selected disabled>Select topping</option>
+              <option value="Love">Love</option>
+              <option value="Olive">Olives</option>
+              <option value="Mayo">Mayo</option>
+            </select>
+          </div>
+        </div>
+        <span class="btn btn-primary" id="add-topping">Additional Topping</span>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+    <div id="order-result">
+      <h2>Your order will cost $<span id="result-cost"></span></h2>
+    </div>
   </div>
 </body>
 </html>
