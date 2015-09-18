@@ -58,23 +58,51 @@ $(document).ready(function() {
     $(newTopping).appendTo("#new-toppings");
   });
 
+  $('#add-pizza').click(function() {
+    var newPizzaForm = ( "<div class='pizza-group'>" +
+                           "<div class=form-group'>" +
+                             "<select id='pizza-size' class='form-control' required='true'>" +
+                               "<option selected disabled>Select Size</option>" +
+                               "<option value='small'>small</option>" +
+                               "<option value='medium'>medium</option>" +
+                               "<option value='large'>large</option>" +
+                             "</select>" +
+                           "</div>" +
+                           "<div id='new-toppings'>" +
+                             "<div class='form-group new-topping'>" +
+                               "<select id='pizza-topping' class='form-control' required='true'>" +
+                                 "<option selected disabled>Select topping</option>" +
+                                 "<option value='Love'>Love</option>" +
+                                 "<option value='Olive'>Olives</option>" +
+                                 "<option value='Mayo'>Mayo</option>" +
+                               "</select>" +
+                             "</div>" +
+                             "<hr>" +
+                           "</div>" +
+                         "</div>");
+    $(newPizzaForm).appendTo(".pizza-order");
+  });
+
   $('form#new-pizza-form').submit(function() {
     event.preventDefault();
+    var newOrder = new Order();
+    $(this).find('.pizza-group').each(function() {
+      var newPizza = new Pizza();
 
-    var newPizza = new Pizza();
+      var inputtedPizzaSize = $(this).find('#pizza-size option:selected').val();
 
-    var inputtedPizzaSize = $(this).find('#pizza-size option:selected').val();
+      eval("newPizza.size." + inputtedPizzaSize + " = true");
 
-    eval("newPizza.size." + inputtedPizzaSize + " = true");
-
-    $('.new-topping').each(function() {
-      var inputtedPizzaTopping = $(this).find('#pizza-topping option:selected').val();
-      var newTopping = new Topping(inputtedPizzaTopping);
-      newPizza.toppings.push(newTopping);
+      $(this).find('.new-topping').each(function() {
+        var inputtedPizzaTopping = $(this).find('#pizza-topping option:selected').val();
+        var newTopping = new Topping(inputtedPizzaTopping);
+        newPizza.toppings.push(newTopping);
+      });
+      newOrder.pizzas.push(newPizza);
     });
 
-    newPizza.costs();
-    $("#result-cost").text(newPizza.price);
+    newOrder.costs();
+    $("#result-cost").text(newOrder.price);
 
     $("#pizza-order").hide();
     $("#order-result").show();
