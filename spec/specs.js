@@ -26,5 +26,39 @@ describe("Pizza", function() {
     expect(newPizza.size).to.eql(newSize);
     expect(newPizza.toppings).to.eql([]);
     expect(newPizza.price).to.eql(null);
-  })
+  });
+});
+
+describe("Pizza.prototype.costs", function() {
+  it("calculates the price of a medium Pizza object and updates the price", function() {
+    var newPizza = new Pizza();
+    var newSize = new Size();
+    var newTopping = new Topping("Uncooked Onion");
+    newPizza.toppings.push(newTopping);
+    newPizza.size.medium = true;
+    newPizza.costs();
+    expect(newPizza.price).to.equal(11);
+  });
+  it("calculates the price of a small Pizza object and updates the price", function() {
+    var newPizza = new Pizza();
+    var newSize = new Size();
+    var newTopping = new Topping("Loaf of Bread");
+    var newTopping2 = new Topping("Croutons");
+    newPizza.toppings.push(newTopping);
+    newPizza.toppings.push(newTopping2);
+    newPizza.size.small = true;
+    newPizza.costs();
+    expect(newPizza.price).to.equal(7);
+  });
+  it("calculates the price of a large Pizza object and updates the price", function() {
+    var newPizza = new Pizza();
+    var newSize = new Size();
+    var newTopping = new Topping("oyster");
+    var newTopping2 = new Topping("Saddle Leather");
+    newPizza.toppings.push(newTopping);
+    newPizza.toppings.push(newTopping2);
+    newPizza.size.large = true;
+    newPizza.costs();
+    expect(newPizza.price).to.equal(17);
+  });
 });
