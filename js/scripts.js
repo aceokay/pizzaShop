@@ -32,6 +32,20 @@ Pizza.prototype.costs = function() {
   this.price = price;
 }
 
-// $(document).ready(function() {
-//   $("#add-pizza").click()
-// });
+$(document).ready(function() {
+  $("#add-topping").click(function() {
+    var newTopping = ( "<div class='form-group'>" +
+                         "<select id='pizza-topping' class='form-control' required='true'>" +
+                           "<option selected disabled>Select topping</option>" +
+                           "<option value='Love'>Love</option>" +
+                           "<option value='Olive'>Olives</option>" +
+                           "<option value='Mayo'>Mayo</option>" +
+                         "</select>" +
+                       "</div>");
+    $(newTopping).appendTo("#new-toppings");
+  });
+
+  $('form#new-pizza-form').submit(function() {
+    
+  });
+});
