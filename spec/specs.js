@@ -12,4 +12,9 @@ describe("Size", function() {
     expect(newSize.medium).to.equal(false);
     expect(newSize.large).to.equal(false);
   });
+  it("allows the change of a size option within the size instance", function() {
+    var newSize = new Size();
+    newSize.small = true;
+    expect(newSize.small).to.equal(true);
+  });
 });
