@@ -18,3 +18,13 @@ describe("Size", function() {
     expect(newSize.small).to.equal(true);
   });
 });
+
+describe("Pizza", function() {
+  it("creates a new instance of Pizza object with size, topping, and price attributes", function() {
+    var newPizza = new Pizza();
+    var newSize = new Size();
+    expect(newPizza.size).to.eql(newSize);
+    expect(newPizza.toppings).to.eql([]);
+    expect(newPizza.price).to.eql(null);
+  })
+});

@@ -7,3 +7,9 @@ function Size() {
   this.medium = false;
   this. large = false;
 }
+
+function Pizza() {
+  this.size = new Size();
+  this.toppings = [];
+  this.price = null;
+}
