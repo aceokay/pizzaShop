@@ -62,3 +62,36 @@ describe("Pizza.prototype.costs", function() {
     expect(newPizza.price).to.equal(17);
   });
 });
+
+describe("Order", function() {
+  it("creates a new instance of Order with pizzas and a total price", function() {
+    var newOrder = new Order();
+    var newPizza = new Pizza();
+    var newSize = new Size();
+    var newTopping = new Topping("Sofa");
+    newPizza.toppings.push(newTopping);
+    newPizza.size.small= true;
+    newOrder.pizzas.push(newPizza);
+    expect(newOrder.pizzas).to.eql([newPizza]);
+  });
+});
+
+describe("Order.prototype.costs", function() {
+  it("calculates the total costs of all pizzas in order", function() {
+    var newOrder = new Order();
+    var newPizza = new Pizza();
+    var newSize = new Size();
+    var newTopping = new Topping("water");
+    newPizza.toppings.push(newTopping);
+    newPizza.size.small= true;
+    var newPizza2 = new Pizza();
+    var newSize2 = new Size();
+    var newTopping2 = new Topping("fleece");
+    newPizza2.toppings.push(newTopping2);
+    newPizza2.size.medium = true;
+    newOrder.pizzas.push(newPizza);
+    newOrder.pizzas.push(newPizza2);
+    newOrder.costs();
+    expect(newOrder.price).to.eql(17);
+  });
+});

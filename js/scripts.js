@@ -14,6 +14,11 @@ function Pizza() {
   this.price = null;
 }
 
+function Order() {
+  this.pizzas = []
+  this.price = null;
+}
+
 Pizza.prototype.costs = function() {
   var price = 0;
   var toppingBasePrice = 1;
@@ -28,7 +33,15 @@ Pizza.prototype.costs = function() {
   }
 
   price += toppingBasePrice * toppingMultiplier;
+  this.price = price;
+}
 
+Order.prototype.costs = function() {
+  var price = 0;
+  this.pizzas.forEach(function(pizza) {
+    pizza.costs();
+    price += pizza.price;
+  });
   this.price = price;
 }
 
